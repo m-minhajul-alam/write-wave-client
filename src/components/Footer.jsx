@@ -20,7 +20,7 @@ const Footer = () => {
                 <div data-aos="fade-up" data-aos-duration="1000">
                     <h3 className="footer-title">Downloade On</h3>
                     <div>
-                        <a href="https://www.facebook.com/"><img className='ml-3 w-28 ' src="https://i.ibb.co/F6QTC3X/android.png" alt="" /></a>
+                        <a href="https://www.facebook.com/"><img className='ml-3 mb-2 w-28 ' src="https://i.ibb.co/F6QTC3X/android.png" alt="" /></a>
                         <a href="https://www.facebook.com/"><img className='ml-3 w-28 ' src="https://i.ibb.co/wNTdM0v/ios.png" alt="" /></a>
                     </div>
                 </div>
