@@ -1,8 +1,9 @@
 const FAQ = () => {
     return (
-        <div className="my-4">
-            <h1 className="text-4xl font-bold text-center text-primary mb-3">FAQs</h1>
-            <div className="join join-vertical w-full">
+        <div className="flex flex-col-reverse md:flex-row justify-between gap-7 items-center my-4">
+            <div className="flex-1">
+                <h1 className="text-5xl text-primary font-bold text-center mb-4">FAQs</h1>
+                <div className="join join-vertical w-full">
                 <div className="collapse collapse-arrow join-item border border-b-0 border-primary">
                     <input type="radio" name="my-accordion-4" />
                     <div className="collapse-title text-xl font-medium text-primary">
@@ -48,6 +49,10 @@ const FAQ = () => {
                         <p>You can connect with fellow writers and readers through comments, likes, and by following their profiles. Engage in discussions, share your thoughts, and build a network of like-minded individuals passionate about writing and blogging.</p>
                     </div>
                 </div>
+            </div>
+            </div>
+            <div className="flex-1 mx-auto">
+                <img src="https://i.ibb.co/f00xjW8/faq.png" alt="" />
             </div>
         </div>
     );
