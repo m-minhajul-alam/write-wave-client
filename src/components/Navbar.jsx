@@ -26,8 +26,8 @@ const Navbar = () => {
 
                 <div data-aos="fade-down" data-aos-duration="1000" className="navbar-end mr-4">
                     <div className="flex justify-center items-center">
-                        <Link><button className="btn btn-primary btn-sm text-white mr-2">Login</button></Link>
-                        <Link><button className="btn btn-secondary btn-sm text-white">Sing Up</button></Link>
+                        <Link to={'/login'}><button className="btn btn-primary btn-sm text-white mr-2">Login</button></Link>
+                        <Link to={'/singup'}><button className="btn btn-secondary btn-sm text-white">Sing Up</button></Link>
                     </div>
                 </div>
             </div>
@@ -41,7 +41,7 @@ const Navbar = () => {
 
                 <div className="flex justify-end flex-1">
                     <div className="flex items-stretch">
-                        <Link><button className="btn btn-primary btn-xs text-white mr-2">Login</button></Link>
+                        <Link to={'/login'}><button className="btn btn-primary btn-xs text-white mr-2">Login</button></Link>
 
                         <div className="dropdown text-gray-400 dropdown-end">
                             <label tabIndex={0} className="\">

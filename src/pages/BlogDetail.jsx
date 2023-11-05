@@ -38,9 +38,7 @@ const BlogDetail = () => {
                     </div>
                     <h6 className="text-xl text-center">jon likton</h6>
                 </div>
-
             </div>
-
         </div>
     );
 };

@@ -4,6 +4,7 @@ import Home from "../pages/Home";
 import AddBlog from "../pages/AddBlog";
 import AllBlog from "../pages/AllBlog";
 import BlogDetail from "../pages/BlogDetail";
+import SingUp from "../pages/SingUp";
 
 const router = createBrowserRouter([
     {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
                 element: <BlogDetail></BlogDetail>
             },
         ]
+    },
+    {
+        path: '/singup',
+        element: <SingUp></SingUp>
     }
 ])
 
