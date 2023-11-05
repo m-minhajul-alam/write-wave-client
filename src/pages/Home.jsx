@@ -1,3 +1,4 @@
+import Auther from "../components/Auther";
 import Banner from "../components/Banner";
 import FAQ from "../components/FAQ";
 import Footer from "../components/Footer";
@@ -7,6 +8,7 @@ const Home = () => {
     return (
         <div>
             <Banner></Banner>
+            <Auther></Auther>
             <FAQ></FAQ>
             <NewsletterSignup></NewsletterSignup>
             <Footer></Footer>
