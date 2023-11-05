@@ -12,7 +12,7 @@ const Navbar = () => {
     return (
         <div>
             {/* Navbar for md and lg screen */}
-            <div className="navbar hidden bg-neutral lg:flex">
+            <div className="navbar hidden bg-neutral rounded-b-xl lg:flex">
                 <div data-aos="fade-down" data-aos-duration="1000" className="navbar-start ml-4">
                 <ul className="menu-horizontal gap-5">
                         {navLinks}
