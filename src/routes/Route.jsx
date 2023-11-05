@@ -5,6 +5,7 @@ import AddBlog from "../pages/AddBlog";
 import AllBlog from "../pages/AllBlog";
 import BlogDetail from "../pages/BlogDetail";
 import SingUp from "../pages/SingUp";
+import Login from "../pages/Login";
 
 const router = createBrowserRouter([
     {
@@ -32,7 +33,11 @@ const router = createBrowserRouter([
     {
         path: '/singup',
         element: <SingUp></SingUp>
-    }
+    },
+    {
+        path: '/login',
+        element: <Login></Login>
+    },
 ])
 
 export default router;
