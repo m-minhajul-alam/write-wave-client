@@ -1,6 +1,6 @@
 const FAQ = () => {
     return (
-        <div className="flex flex-col-reverse md:flex-row justify-between gap-7 items-center my-4">
+        <div className="flex flex-col-reverse md:flex-row justify-between gap-7 items-center my-4 max-w-6xl mx-auto">
             <div className="flex-1">
                 <h1 className="text-5xl text-primary font-bold text-center mb-4">FAQs</h1>
                 <div className="join join-vertical w-full">

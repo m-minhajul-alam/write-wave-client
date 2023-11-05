@@ -12,19 +12,19 @@ const Navbar = () => {
     return (
         <div>
             {/* Navbar for md and lg screen */}
-            <div className="navbar hidden lg:flex">
-                <div data-aos="fade-down" data-aos-duration="1000" className="navbar-start">
+            <div className="navbar hidden bg-neutral lg:flex">
+                <div data-aos="fade-down" data-aos-duration="1000" className="navbar-start ml-4">
                 <ul className="menu-horizontal gap-5">
                         {navLinks}
                     </ul>
                 </div>
 
                 <div data-aos="fade-down" data-aos-duration="1000" className="navbar-center">
-                    <Link to={'/'} className="text-primary text-xl font-bold ">
+                    <Link to={'/'} className="text-primary text-3xl font-bold ">
                         <span>Write<span className="text-secondary">Wave</span></span></Link>
                 </div>
 
-                <div data-aos="fade-down" data-aos-duration="1000" className="navbar-end">
+                <div data-aos="fade-down" data-aos-duration="1000" className="navbar-end mr-4">
                     <div className="flex justify-center items-center">
                         <Link><button className="btn btn-primary btn-sm text-white mr-2">Login</button></Link>
                         <Link><button className="btn btn-secondary btn-sm text-white">Sing Up</button></Link>

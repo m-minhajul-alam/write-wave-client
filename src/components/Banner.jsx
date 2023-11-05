@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Banner = () => {
     return (
-        <div className="carousel w-full h-56 md:h-[400px] rounded-xl">
+        <div className="carousel w-full h-56 md:h-[400px] rounded-b-xl">
             {/* slider 1 */}
             <div id="slide1" className="carousel-item relative w-full">
                 <div className="hero" style={{ backgroundImage: 'url(https://i.ibb.co/kqrp8ng/Banner-1.png)' }}>

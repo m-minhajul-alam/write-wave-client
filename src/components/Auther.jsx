@@ -1,6 +1,6 @@
 const Auther = () => {
     return (
-        <div className="flex flex-col lg:flex-row justify-between items-center">
+        <div className="flex flex-col lg:flex-row justify-between items-center max-w-6xl mx-auto">
             <div className="lg:flex-1">
                 <img src="https://i.ibb.co/Wvw0Mb3/world.png" alt="" />
             </div>
