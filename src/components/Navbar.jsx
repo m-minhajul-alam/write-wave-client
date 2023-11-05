@@ -3,9 +3,9 @@ import { Link, NavLink } from "react-router-dom";
 const Navbar = () => {
     const navLinks = <>
         <li><NavLink to={"/"} className={({ isActive }) => isActive ? "font-semibold text-secondary" : "font-light text-primary"}>Home</NavLink></li>
-        <li><NavLink to={"/addBlog"} className={({ isActive }) => isActive ? "font-semibold text-secondary" : "font-light text-primary"}>Add Blog</NavLink></li>
-        <li><NavLink to={"/allBlog"} className={({ isActive }) => isActive ? "font-semibold text-secondary" : "font-light text-primary"}>All Blog</NavLink></li>
-        <li><NavLink to={"/featuredBlog"} className={({ isActive }) => isActive ? "font-semibold text-secondary" : "font-light text-primary"}>Featured Blog</NavLink></li>
+        <li><NavLink to={"/allblog"} className={({ isActive }) => isActive ? "font-semibold text-secondary" : "font-light text-primary"}>All Blog</NavLink></li>
+        <li><NavLink to={"/addblog"} className={({ isActive }) => isActive ? "font-semibold text-secondary" : "font-light text-primary"}>Add Blog</NavLink></li>
+        <li><NavLink to={"/featuredblog"} className={({ isActive }) => isActive ? "font-semibold text-secondary" : "font-light text-primary"}>Featured Blog</NavLink></li>
         <li><NavLink to={"/wishlist"} className={({ isActive }) => isActive ? "font-semibold text-secondary" : "font-light text-primary"}>Wishlist</NavLink></li>
     </>
 
@@ -14,7 +14,7 @@ const Navbar = () => {
             {/* Navbar for md and lg screen */}
             <div className="navbar hidden bg-neutral rounded-b-xl lg:flex">
                 <div data-aos="fade-down" data-aos-duration="1000" className="navbar-start ml-4">
-                <ul className="menu-horizontal gap-5">
+                    <ul className="menu-horizontal gap-5">
                         {navLinks}
                     </ul>
                 </div>
