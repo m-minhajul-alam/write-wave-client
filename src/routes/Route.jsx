@@ -3,6 +3,7 @@ import Root from "../root/Root";
 import Home from "../pages/Home";
 import AddBlog from "../pages/AddBlog";
 import AllBlog from "../pages/AllBlog";
+import BlogDetail from "../pages/BlogDetail";
 
 const router = createBrowserRouter([
     {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
             {
                 path: '/addblog',
                 element: <AddBlog></AddBlog>
+            },
+            {
+                path: '/blogdetail',
+                element: <BlogDetail></BlogDetail>
             },
         ]
     }

@@ -1,4 +1,5 @@
 import { FaArrowRight, FaRegBookmark } from "react-icons/fa"
+import { Link } from "react-router-dom";
 const RecentBlog = () => {
     return (
         <div className="max-w-6xl mx-auto my-4">
@@ -11,7 +12,7 @@ const RecentBlog = () => {
                         <div className="card-actions justify-end">
                             <button className="btn btn-ghost bg-gray-300 rounded-full">Listen</button>
                             <button className="btn btn-primary rounded-full"><FaRegBookmark></FaRegBookmark> </button>
-                            <button className="btn btn-primary rounded-full"><FaArrowRight></FaArrowRight> </button>
+                            <Link to={'/blogdetail'}><button className="btn btn-primary rounded-full"><FaArrowRight></FaArrowRight> </button></Link>
                         </div>
                     </div>
                 </div>
@@ -23,7 +24,7 @@ const RecentBlog = () => {
                         <div className="card-actions justify-end">
                             <button className="btn btn-ghost bg-gray-300 rounded-full">Listen</button>
                             <button className="btn btn-primary rounded-full"><FaRegBookmark></FaRegBookmark> </button>
-                            <button className="btn btn-primary rounded-full"><FaArrowRight></FaArrowRight> </button>
+                            <Link to={'/blogdetail'}><button className="btn btn-primary rounded-full"><FaArrowRight></FaArrowRight> </button></Link>
                         </div>
                     </div>
                 </div>
