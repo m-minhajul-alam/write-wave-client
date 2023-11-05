@@ -1,33 +1,40 @@
-import { useState } from 'react';
-
 const NewsletterSignup = () => {
-    const [email, setEmail] = useState('');
-
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(email);
-        setEmail('');
+        const form = new FormData(e.currentTarget);
+        const name = (form.get('name'));
+        const email = (form.get('email'));
+        const user = { name, email };
+        console.log(user);
     };
 
     return (
-        <div className="bg-gradient-to-tr from-primary to-secondary h-96 flex items-center justify-center rounded-xl my-3">
-            <div className="bg-white p-8 rounded-lg shadow-md w-96">
-                <h2 className="text-2xl font-bold text-primary text-center mb-4">Subscribe to Our Newsletter</h2>
-                <p className="text-center mb-4">Stay updated with our latest blogs and news. Subscribe now!</p>
+        <div className="h-96 flex flex-col md:flex-row items-center justify-between rounded-xl gap-7 my-3">
+            <div className="lg:flex-1 space-y-5 text-center lg:text-right">
+                <h1 className="text-5xl font-bold text-primary">Subscribe to Our <span className="text-secondary">Newsletter</span></h1>
+                <p className="text-base font-medium">Our newsletter is your direct ticket to a world of knowledge, inspiration, and community. By subscribing, you will receive regular updates on trending topics, featured authors, and exclusive content. Don not miss out on this opportunity to connect with our growing community of writers, bloggers, and readers. Subscribe today and embark on a journey of discovery through our carefully curated newsletter</p>
+            </div>
+
+            <div className="lg:flex-1 bg-gradient-to-tr from-primary to-secondary p-8 rounded-lg shadow-md w-96">
                 <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
                     <input
+                        type="text"
+                        name="name"
+                        placeholder="Your name"
+                        className="bg-gray-100 rounded-lg p-3 focus:outline-none"
+                    />
+                    <input
                         type="email"
-                        id="email"
                         name="email"
-                        value={email}
                         placeholder="Your Email"
                         className="bg-gray-100 rounded-lg p-3 focus:outline-none"
                     />
-                    <button type="submit" className="bg-gradient-to-tr from-primary to-secondary text-white font-semibold py-2 rounded-lg">
+                    <button type="submit" className="btn btn-secondary text-white">
                         Subscribe
                     </button>
                 </form>
             </div>
+
         </div>
     );
 };
