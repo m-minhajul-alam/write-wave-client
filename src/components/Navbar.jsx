@@ -1,11 +1,24 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../providers/AuthProvider";
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext);
+    const handelLogOut = () => {
+        logOut()
+            .then()
+            .catch()
+    }
+
     const navLinks = <>
         <li><NavLink to={"/"} className={({ isActive }) => isActive ? "font-semibold text-secondary" : "font-light text-primary"}>Home</NavLink></li>
+
         <li><NavLink to={"/allblog"} className={({ isActive }) => isActive ? "font-semibold text-secondary" : "font-light text-primary"}>All Blog</NavLink></li>
+
         <li><NavLink to={"/addblog"} className={({ isActive }) => isActive ? "font-semibold text-secondary" : "font-light text-primary"}>Add Blog</NavLink></li>
+
         <li><NavLink to={"/featuredblog"} className={({ isActive }) => isActive ? "font-semibold text-secondary" : "font-light text-primary"}>Featured Blog</NavLink></li>
+
         <li><NavLink to={"/wishlist"} className={({ isActive }) => isActive ? "font-semibold text-secondary" : "font-light text-primary"}>Wishlist</NavLink></li>
     </>
 
@@ -25,10 +38,18 @@ const Navbar = () => {
                 </div>
 
                 <div data-aos="fade-down" data-aos-duration="1000" className="navbar-end mr-4">
-                    <div className="flex justify-center items-center">
-                        <Link to={'/login'}><button className="btn btn-primary btn-sm text-white mr-2">Login</button></Link>
-                        <Link to={'/singup'}><button className="btn btn-secondary btn-sm text-white">Sing Up</button></Link>
-                    </div>
+                    {
+                        user ?
+                            <div className="flex justify-center items-center">
+                                <button onClick={handelLogOut} className="btn btn-ghost btn-xs text-secondary mr-2">Logout</button>
+                                <img className="w-8 rounded-full" src={user?.photoURL || "https://i.ibb.co/r69Q4h6/user-icon-gray.png"} />
+                            </div>
+                            :
+                            <div className="flex justify-center items-center">
+                                <Link to={'/login'}><button className="btn btn-primary btn-xs text-white mr-2">Login</button></Link>
+                                <Link to={'/singup'}><button className="btn btn-secondary btn-xs text-white">Sing Up</button></Link>
+                            </div>
+                    }
                 </div>
             </div>
 
@@ -41,13 +62,21 @@ const Navbar = () => {
 
                 <div className="flex justify-end flex-1">
                     <div className="flex items-stretch">
-                        <Link to={'/login'}><button className="btn btn-primary btn-xs text-white mr-2">Login</button></Link>
-
                         <div className="dropdown text-gray-400 dropdown-end">
                             <label tabIndex={0} className="\">
-                                <Link><button className="btn btn-secondary btn-xs text-white">Menu</button></Link>
+                                {
+                                    user ?
+                                        <img className="w-8 rounded-full" src={user?.photoURL || "https://i.ibb.co/r69Q4h6/user-icon-gray.png"} />
+                                        :
+                                        <div className="flex justify-center items-center">
+                                            <Link to={'/login'}><button className="btn btn-primary btn-xs text-white mr-2">Login</button></Link>
+                                            <Link to={'/singup'}><button className="btn btn-secondary btn-xs text-white">Sing Up</button></Link>
+                                        </div>
+                                }
                             </label>
-                            <ul tabIndex={0} className="dropdown-content z-[1] p-2 text-center text-gray-400 shadow bg-base-100 w-40 mt-3">
+                            <ul tabIndex={0} className="dropdown-content z-[1] p-2 text-center text-xs space-y-2 shadow bg-base-100 rounded-xl w-40 mt-3">
+                                <li><p className="text-sm font-bold text-black">{user?.displayName}</p> </li>
+                                <li><button onClick={handelLogOut} className="btn btn-secondary btn-xs text-white">Logout</button> </li>
                                 {navLinks}
                             </ul>
                         </div>
