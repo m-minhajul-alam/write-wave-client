@@ -18,7 +18,7 @@ const FeaturedBlog = () => {
 
 
     return (
-        <div className="my-4 rounded-xl">
+        <div className="max-w-6xl mx-auto my-4 rounded-xl">
             <div>
                 <h1 className="text-primary text-3xl text-center font-bold py-5">Featured Blog</h1>
                 <p className="text-sm text-center font-bold mb-3">Discover outstanding content  in our <br /> Featured Blog section..</p>

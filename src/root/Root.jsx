@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar';
 
 const Root = () => {
     return (
-        <div className='w-[90%] md:max-w-7xl mx-auto'>
+        <div className='w-[95%] mx-auto'>
             <Navbar></Navbar>
             <Outlet></Outlet>
         </div>

@@ -2,12 +2,12 @@ import { FaArrowRight, FaTimes } from "react-icons/fa";
 
 const Wishlist = () => {
     return (
-        <div>
+        <div className="max-w-6xl mx-auto">
             <div>
                 <h2 className="text-primary text-3xl text-center font-bold py-5">Your Wishlist</h2>
                 <p className="text-sm text-center font-bold mb-3">Your personal collection of favorite <br /> blogs and articles.</p>
             </div>
-            
+
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
                 <div className="card card-side bg-base-100 shadow-xl h-44">
                     <figure><img className="w-32 md:w-44 h-full object-cover" src="https://i.ibb.co/qFCQbRw/00001.webp" alt="" /></figure>
