@@ -9,6 +9,7 @@ import Login from "../pages/Login";
 import UpdateBlog from "../pages/UpdateBlog";
 import Wishlist from "../pages/Wishlist";
 import FeaturedBlog from "../pages/FeaturedBlog";
+import PrivateRoute from "./PiveteRoute";
 
 const router = createBrowserRouter([
     {
@@ -25,7 +26,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/addblog',
-                element: <AddBlog></AddBlog>
+                element: <PrivateRoute><AddBlog></AddBlog></PrivateRoute>
             },
             {
                 path: '/featuredblog',
@@ -33,11 +34,11 @@ const router = createBrowserRouter([
             },
             {
                 path: '/wishlist',
-                element: <Wishlist></Wishlist>
+                element: <PrivateRoute><Wishlist></Wishlist></PrivateRoute>
             },
             {
                 path: '/updateblog',
-                element: <UpdateBlog></UpdateBlog>
+                element: <PrivateRoute><UpdateBlog></UpdateBlog></PrivateRoute>
             },
             {
                 path: '/blogdetail',
