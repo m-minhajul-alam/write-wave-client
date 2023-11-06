@@ -15,7 +15,10 @@ const Login = () => {
 
     return (
         <div className="max-w-7xl w-[90%] mx-auto my-10">
+            <div>
             <h2 className="text-primary text-3xl text-center font-bold py-5">Please Login</h2>
+            <p className="text-sm text-center font-bold mb-3">Welcome back! Log in to your <br /> account to access your profile.</p>
+            </div>
 
             <div className="flex flex-col-reverse md:flex-row justify-center items-center max-w-4xl mx-auto">
                 <div className="hero h-full py-2">

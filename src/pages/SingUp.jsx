@@ -17,7 +17,10 @@ const SingUp = () => {
 
     return (
         <div className="max-w-7xl w-[90%] mx-auto my-10">
-            <h1 className="text-primary text-3xl text-center font-bold py-5">Please Sing Up</h1>
+            <div>
+                <h1 className="text-primary text-3xl text-center font-bold py-5">Please Sing Up</h1>
+                <p className="text-sm text-center font-bold mb-3">Join our community! Sign up today.</p>
+            </div>
 
             <div className="flex flex-col-reverse md:flex-row justify-center items-center max-w-4xl mx-auto">
                 <div className="hero">

@@ -7,6 +7,7 @@ import BlogDetail from "../pages/BlogDetail";
 import SingUp from "../pages/SingUp";
 import Login from "../pages/Login";
 import UpdateBlog from "../pages/UpdateBlog";
+import Wishlist from "../pages/Wishlist";
 
 const router = createBrowserRouter([
     {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
             {
                 path: '/updateblog',
                 element: <UpdateBlog></UpdateBlog>
+            },
+            {
+                path: '/wishlist',
+                element: <Wishlist></Wishlist>
             },
             {
                 path: '/blogdetail',
