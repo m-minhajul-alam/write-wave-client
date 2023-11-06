@@ -1,5 +1,5 @@
 
-const AddBlog = () => {
+const UpdateBlog = () => {
 
     const hendelAddBlog = (e) => {
         e.preventDefault();
@@ -13,8 +13,8 @@ const AddBlog = () => {
 
     return (
         <div className="max-w-7xl w-[90%] mx-auto mb-4">
-            <h1 className="text-primary text-3xl text-center font-bold py-5">Add A Nwe Blog</h1>
-            <p className="text-sm text-center font-bold mb-3">Ready to share your thoughts <br /> and ideas with the world?  <br /> Adding a new blog.</p>
+            <h1 className="text-primary text-3xl text-center font-bold py-5">Update Your Blog</h1>
+            <p className="text-sm text-center font-bold mb-3">Update your blog to stay current and <br /> relevant in just a few clicks..</p>
 
             <div className="flex flex-col-reverse md:flex-row justify-center max-w-4xl mx-auto">
                 <div className="hero">
@@ -38,17 +38,17 @@ const AddBlog = () => {
                                 <textarea name="longDec" id="" cols="30" rows="10" placeholder="Write Full Blog" className="p-4 rounded-lg bg-base-100 border-2 focus:outline-none" required></textarea>
                             </div>
                             <div className="form-control my-2">
-                                <button className="btn btn-primary text-white">Add</button>
+                                <button className="btn btn-primary text-white">Update</button>
                             </div>
                         </form>
                     </div>
                 </div>
                 <div>
-                    <img src="https://i.ibb.co/yXm9gMJ/add-1.png" alt="" />
+                    <img src="https://i.ibb.co/0F35YR1/update-2.png" alt="" />
                 </div>
             </div>
         </div>
     );
 };
 
-export default AddBlog;
+export default UpdateBlog;

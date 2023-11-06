@@ -6,6 +6,7 @@ import AllBlog from "../pages/AllBlog";
 import BlogDetail from "../pages/BlogDetail";
 import SingUp from "../pages/SingUp";
 import Login from "../pages/Login";
+import UpdateBlog from "../pages/UpdateBlog";
 
 const router = createBrowserRouter([
     {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
             {
                 path: '/addblog',
                 element: <AddBlog></AddBlog>
+            },
+            {
+                path: '/updateblog',
+                element: <UpdateBlog></UpdateBlog>
             },
             {
                 path: '/blogdetail',
