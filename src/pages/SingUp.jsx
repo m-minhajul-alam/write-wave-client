@@ -17,7 +17,7 @@ const SingUp = () => {
 
     return (
         <div className="max-w-7xl w-[90%] mx-auto my-10">
-            <h1 className="text-primary text-3xl text-center font-bold py-5">Please Register</h1>
+            <h1 className="text-primary text-3xl text-center font-bold py-5">Please Sing Up</h1>
 
             <div className="flex flex-col-reverse md:flex-row justify-center items-center max-w-4xl mx-auto">
                 <div className="hero">
@@ -37,7 +37,7 @@ const SingUp = () => {
 
                             </div>
                             <div className="form-control my-2">
-                                <button className="btn btn-primary text-white">Register</button>
+                                <button className="btn btn-primary text-white">Sing Up</button>
                             </div>
                             <p className="text-xs text-center">Alredy have account? Please <Link
                                 className="text-primary font-bold hover:underline" to={"/login"}>Login</Link>

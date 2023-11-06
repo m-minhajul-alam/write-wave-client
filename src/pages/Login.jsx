@@ -35,8 +35,8 @@ const Login = () => {
                             </div>
                             <p className="text-xs text-center">
                                 Do not have account? Please <Link
-                                    className="text-primary font-bold hover:underline" to={"/register"}>
-                                    Register</Link>
+                                    className="text-primary font-bold hover:underline" to={"/singup"}>
+                                    Sing Up</Link>
                             </p>
                             <button onClick={hendelGoogleReg} type='submit' className='text-center w-full py-1 font-bold my-2'>Login With Google</button>
                         </form>

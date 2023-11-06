@@ -30,7 +30,10 @@ const Banner = () => {
                         <div className="hero-overlay bg-opacity-60"></div>
                         <div className="hero-content text-center text-neutral-content">
                             <div className="max-w-lg">
-                                <h1 className="mb-2 md:mb-5 text-2xl md:text-5xl font-bold">Explore. Create. Share.</h1>
+                                <h1 className="mb-2 md:mb-5 text-2xl md:text-5xl font-bold">
+                                    <span className="text-primary">Explore. </span>
+                                    <span className="text-secondary">Create. </span>
+                                    <span>Share. </span></h1>
                                 <p className="mb-2 md:mb-5 text-xs md:text-base">Welcome to our vibrant blog community! Our platform is your canvas to Explore, Create, and Share your stories with the world.</p>
                                 <Link><button className="btn btn-primary btn-xs md:btn-md text-neutral-content">Get Started</button></Link>
                             </div>
@@ -47,7 +50,10 @@ const Banner = () => {
                         <div className="hero-overlay bg-opacity-60"></div>
                         <div className="hero-content text-center text-neutral-content">
                             <div className="max-w-lg">
-                                <h1 className="mb-2 md:mb-5 text-2xl md:text-5xl font-bold">Explore. Create. Share.</h1>
+                                <h1 className="mb-2 md:mb-5 text-2xl md:text-5xl font-bold">
+                                    <span className="text-primary">Explore. </span>
+                                    <span className="text-secondary">Create. </span>
+                                    <span>Share. </span></h1>
                                 <p className="mb-2 md:mb-5 text-xs md:text-base">Welcome to our vibrant blog community! Our platform is your canvas to Explore, Create, and Share your stories with the world.</p>
                                 <Link><button className="btn btn-primary btn-xs md:btn-md text-neutral-content">Get Started</button></Link>
                             </div>
