@@ -1,3 +1,5 @@
+import toast from "react-hot-toast";
+
 const NewsletterSignup = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -6,6 +8,8 @@ const NewsletterSignup = () => {
         const email = (form.get('email'));
         const user = { name, email };
         console.log(user);
+        e.target.reset();
+        toast.success("Thank you for subscribing to our newsletter")
     };
 
     return (
@@ -31,9 +35,7 @@ const NewsletterSignup = () => {
                         className="bg-gray-100 rounded-lg p-3 focus:outline-none"
                         required
                     />
-                    <button type="submit" className="btn btn-secondary text-white">
-                        Subscribe
-                    </button>
+                    <input type="submit" className="btn btn-secondary text-white" value="Subscribe" />
                 </form>
             </div>
 

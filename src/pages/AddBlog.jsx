@@ -1,14 +1,48 @@
+// import { useQuery } from "@tanstack/react-query";
+import { useContext } from "react";
+import toast from "react-hot-toast";
+import { AuthContext } from "../providers/AuthProvider";
 
 const AddBlog = () => {
+    const { user } = useContext(AuthContext);
+    console.log(user.photoURL);
+    console.log(user.email);
+    console.log(user.displayName);
 
     const hendelAddBlog = (e) => {
         e.preventDefault();
-        const from = new FormData(e.currentTarget);
-        const name = (from.get('name'));
-        const photo = (from.get('photo'));
-        const email = (from.get('email'));
-        const password = (from.get('password'));
-        console.log(name, photo, email, password);
+        const form = e.target;
+        const photo = form.photo.value;
+        const category = form.category.value;
+        const title = form.title.value;
+        const shortDec = form.shortDec.value;
+        const longDec = form.longDec.value;
+        const newBlog = ({ photo, category, title, shortDec, longDec, ownerEmail: user.email, ownerPhoto: user.photoURL, ownerName: user.displayName });
+        console.log(newBlog);
+
+        // const { data } = useQuery({
+        //     queryKey: ['blogs'],
+        //     queryFn: async () => {
+        //         const res = await fetch('http://localhost:5000/blogs')
+        //         return res.json();
+        //     }
+        // })
+
+        fetch('http://localhost:5000/blogs', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newBlog)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.insertedId) {
+                    toast.success('New blog added')
+                }
+                e.target.reset();
+            })
     }
 
     return (
@@ -23,10 +57,18 @@ const AddBlog = () => {
                             <div className="form-control my-2">
                                 <input type="url" name='photo' placeholder="Photo URL" className="input input-bordered" required />
                             </div>
-                            <select required className="select select-bordered w-full max-w-sm focus:outline-none">
+                            <select required name="category" className="select select-bordered w-full max-w-sm focus:outline-none">
                                 <option disabled selected>Select A Category</option>
-                                <option>Han Solo</option>
-                                <option>Greedo</option>
+                                <option value="tech">Tech</option>
+                                <option value="travel">Travel</option>
+                                <option value="health">Health</option>
+                                <option value="food">Food</option>
+                                <option value="lifestyle">Lifestyle</option>
+                                <option value="business">Business</option>
+                                <option value="culture">Culture</option>
+                                <option value="science">Science</option>
+                                <option value="parenting">Parenting</option>
+                                <option value="environment">Environment</option>
                             </select>
                             <div className="form-control my-2">
                                 <input type="text" name='title' placeholder="Blog Title" className="input input-bordered" required />

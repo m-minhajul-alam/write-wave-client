@@ -2,6 +2,7 @@ import { FaArrowRight, FaRegBookmark } from "react-icons/fa"
 import { Link } from "react-router-dom";
 
 const RecentBlog = () => {
+
     return (
         <div className="max-w-6xl mx-auto my-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
