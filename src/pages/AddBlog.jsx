@@ -4,9 +4,6 @@ import { AuthContext } from "../providers/AuthProvider";
 
 const AddBlog = () => {
     const { user } = useContext(AuthContext);
-    console.log(user.photoURL);
-    console.log(user.email);
-    console.log(user.displayName);
 
     const hendelAddBlog = (e) => {
         e.preventDefault();

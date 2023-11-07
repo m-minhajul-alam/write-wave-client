@@ -6,7 +6,7 @@ const BlogDetail = () => {
     const { user } = useContext(AuthContext);
 
     const loadedBlog = useLoaderData();
-    const { title, shortDec, photo, ownerPhoto, ownerName, ownerEmail, longDec, category } = loadedBlog;
+    const { _id, title, shortDec, photo, ownerPhoto, ownerName, ownerEmail, longDec, category } = loadedBlog;
 
     return (
         <div className="max-w-6xl mx-auto my-4">
@@ -31,7 +31,7 @@ const BlogDetail = () => {
                             {
                                 (user?.email == ownerEmail) ?
                                     <div>
-                                        <Link to={'/updateblog'}><button className="btn btn-primary btn-sm rounded-full text-white mr-3">Update</button></Link>
+                                        <Link to={`/updateblog/${_id}`}><button className="btn btn-primary btn-sm rounded-full text-white mr-3">Update</button></Link>
                                         <Link><button className="btn btn-secondary btn-sm rounded-full text-white">Delete</button></Link>
                                     </div>
                                     :
@@ -45,12 +45,19 @@ const BlogDetail = () => {
                     <p className="text-justify">{longDec}</p>
 
                     {/* Add comment */}
-                    <form>
-                        <div className="w-full flex flex-col justify-center">
-                            <textarea name="" id="" cols="35" rows="3" placeholder="Type your comment..." className="p-4 rounded-xl rounded-b-none focus:outline-none"></textarea>
-                            <input className="btn btn-secondary btn-sm rounded-t-none" type="submit" value="submit" />
-                        </div>
-                    </form>
+                    <div>
+                        {
+                            (user?.email !== ownerEmail) ?
+                                <form>
+                                    <div className="w-full flex flex-col justify-center">
+                                        <textarea name="" id="" cols="35" rows="3" placeholder="Type your comment..." className="p-4 rounded-xl rounded-b-none focus:outline-none"></textarea>
+                                        <input className="btn btn-secondary btn-sm rounded-t-none" type="submit" value="submit" />
+                                    </div>
+                                </form>
+                                :
+                                <p className="text-2xl text-error font-bold text-center border-2 border-error py-3 w-full rounded-xl">Can not comment on Own Blog</p>
+                        }
+                    </div>
 
                     {/* Show Comments */}
                     <div className="bg-white p-5 rounded-xl">

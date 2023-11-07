@@ -1,14 +1,35 @@
+import toast from "react-hot-toast";
+import { useLoaderData } from "react-router-dom";
 
 const UpdateBlog = () => {
+    const loadedBlog = useLoaderData();
+    const { _id, title, shortDec, photo, ownerPhoto, ownerName, ownerEmail, longDec, category } = loadedBlog;
 
-    const hendelAddBlog = (e) => {
+    const hendelUpdateBlog = (e) => {
         e.preventDefault();
-        const from = new FormData(e.currentTarget);
-        const name = (from.get('name'));
-        const photo = (from.get('photo'));
-        const email = (from.get('email'));
-        const password = (from.get('password'));
-        console.log(name, photo, email, password);
+        const form = e.target;
+        const photo = form.photo.value;
+        const category = form.category.value;
+        const title = form.title.value;
+        const shortDec = form.shortDec.value;
+        const longDec = form.longDec.value;
+        const updateBlog = ({ photo, category, title, shortDec, longDec, ownerEmail: ownerEmail, ownerPhoto: ownerPhoto, ownerName: ownerName });
+
+        fetch(`http://localhost:5000/blogs/${_id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updateBlog)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.insertedId) {
+                    toast.success('Blog Updated')
+                }
+                e.target.reset();
+            })
     }
 
     return (
@@ -19,11 +40,12 @@ const UpdateBlog = () => {
             <div className="flex flex-col-reverse md:flex-row justify-center max-w-4xl mx-auto">
                 <div className="hero">
                     <div className="flex-shrink-0 w-full max-w-sm">
-                        <form onSubmit={hendelAddBlog}>
+                        <form onSubmit={hendelUpdateBlog}>
                             <div className="form-control my-2">
-                                <input type="url" name='photo' placeholder="Photo URL" className="input input-bordered" required />
+                                <input type="url" name='photo' defaultValue={photo} placeholder="Photo URL" className="input input-bordered" required />
                             </div>
-                            <select required className="select select-bordered w-full max-w-sm focus:outline-none">
+                            <select required name="category" defaultValue={category} className="select select-bordered w-full max-w-sm focus:outline-none">
+                                <option disabled selected>Select A Category</option>
                                 <option>Tech</option>
                                 <option>Travel</option>
                                 <option>Health</option>
@@ -36,13 +58,13 @@ const UpdateBlog = () => {
                                 <option>Environment</option>
                             </select>
                             <div className="form-control my-2">
-                                <input type="text" name='title' placeholder="Blog Title" className="input input-bordered" required />
+                                <input type="text" name='title' defaultValue={title} placeholder="Blog Title" className="input input-bordered" required />
                             </div>
                             <div className="form-control my-2">
-                                <textarea name="shortDec" id="" cols="30" rows="3" placeholder="Add A Short Description" className="p-4 rounded-lg bg-base-100 border-2 focus:outline-none" required></textarea>
+                                <textarea name="shortDec" id="" cols="30" rows="3" defaultValue={shortDec} placeholder="Add A Short Description" className="p-4 rounded-lg bg-base-100 border-2 focus:outline-none" required></textarea>
                             </div>
                             <div className="form-control my-2">
-                                <textarea name="longDec" id="" cols="30" rows="10" placeholder="Write Full Blog" className="p-4 rounded-lg bg-base-100 border-2 focus:outline-none" required></textarea>
+                                <textarea name="longDec" id="" cols="30" rows="10" defaultValue={longDec} placeholder="Write Full Blog" className="p-4 rounded-lg bg-base-100 border-2 focus:outline-none" required></textarea>
                             </div>
                             <div className="form-control my-2">
                                 <button className="btn btn-primary text-white">Update</button>
