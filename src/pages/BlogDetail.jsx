@@ -1,26 +1,48 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useLoaderData } from "react-router-dom";
+import { AuthContext } from "../providers/AuthProvider";
 
 const BlogDetail = () => {
+    const { user } = useContext(AuthContext);
+
+    const loadedBlog = useLoaderData();
+    const { title, shortDec, photo, ownerPhoto, ownerName, ownerEmail, longDec, category } = loadedBlog;
+
     return (
         <div className="max-w-6xl mx-auto my-4">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {/* Side Panal */}
                 <div className="h-fit bg-gray-300 py-10 rounded-xl md:flex flex-col">
                     <div className="w-full flex justify-center">
-                        <img className="w-[150px] rounded-full" src="https://i.ibb.co/9qmtc5b/person-1.jpg" alt="" />
+                        <img className="w-[150px] rounded-full mb-3" src={ownerPhoto} alt="" />
                     </div>
-                    <h6 className="text-xl text-center">jon likton</h6>
+                    <h6 className="text-xl font-bold text-center">{ownerName}</h6>
+                    <h6 className="text-xl text-center">{ownerEmail}</h6>
                 </div>
 
                 {/* Main Panal */}
                 <div className="md:col-span-2 space-y-6">
-                    <img className="rounded-xl shadow-lg" src="https://i.ibb.co/qFCQbRw/00001.webp" alt="" />
-                    <span className="btn btn-ghost btn-sm bg-gray-300 rounded-full text-white mr-3">category</span>
-                    <Link to={'/updateblog'}><button className="btn btn-primary btn-sm rounded-full text-white mr-3">Update</button></Link>
-                    <Link><button className="btn btn-secondary btn-sm rounded-full text-white">Delete</button></Link>
-                    <h1 className="text-3xl text-primary font-bold">Mastering the Art of Blogging</h1>
-                    <p className="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit animi, nesciunt repellat laborum a repellendus ullam ut commodi facere adipisci iusto molestias est laudantium ipsum blanditiis odit magni ipsam sapiente aliquam, consequuntur dicta nisi, impedit nam. Excepturi reprehenderit accusantium tempore!</p>
-                    <p className="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. In tenetur, doloribus iusto accusamus deserunt eveniet quas et voluptates ea nihil quo, quam, exercitationem culpa blanditiis odio magni fugit ab! Voluptatum amet vitae iste! Pariatur iste, accusantium debitis ab, excepturi laboriosam culpa sed vel, sint molestiae sapiente laborum fugit quod eveniet quam minus deleniti quisquam eos modi. Quos eaque delectus reprehenderit odit, voluptate ducimus ea earum rem fugiat excepturi nobis eveniet obcaecati? Asperiores fugit labore, provident aut voluptatem dolore iste? Rerum cumque iusto eaque natus commodi dolorem temporibus, odit at fuga delectus nemo neque. Laboriosam accusantium amet, officiis nihil vero illo, omnis iusto vel perspiciatis maiores nesciunt? Minus, incidunt quibusdam laborum quisquam eum numquam</p>
+                    <img className="rounded-xl shadow-lg" src={photo} alt="" />
+
+                    <div className="flex justify-start items-center">
+                        <span title="category" className="btn btn-sm btn-neutral rounded-full text-white mr-3">{category}</span>
+
+                        <div>
+                            {
+                                (user?.email == ownerEmail) ?
+                                    <div>
+                                        <Link to={'/updateblog'}><button className="btn btn-primary btn-sm rounded-full text-white mr-3">Update</button></Link>
+                                        <Link><button className="btn btn-secondary btn-sm rounded-full text-white">Delete</button></Link>
+                                    </div>
+                                    :
+                                    " "
+                            }
+                        </div>
+                    </div>
+
+                    <h1 className="text-3xl text-primary font-bold">{title}</h1>
+                    <p className="text-justify">{shortDec}</p>
+                    <p className="text-justify">{longDec}</p>
 
                     {/* Add comment */}
                     <form>

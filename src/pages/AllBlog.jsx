@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { FaArrowRight, FaRegBookmark } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const AllBlog = () => {
     const [blogs, setBlogs] = useState();
@@ -9,6 +10,9 @@ const AllBlog = () => {
         fetch("http://localhost:5000/blogs")
             .then(res => res.json())
             .then(data => setBlogs(data))
+            .catch((error) => {
+                console.log('Error in useEffect:', error);
+            });
     }, [])
 
     return (
@@ -24,19 +28,19 @@ const AllBlog = () => {
                 </div>
 
                 <div className="form-control">
-                    <div className="input-group focus:outline-none">
-                        <select className="select select-bordered">
-                            <option disabled selected>Filter</option>
-                            <option value="tech">Tech</option>
-                            <option value="travel">Travel</option>
-                            <option value="health">Health</option>
-                            <option value="food">Food</option>
-                            <option value="lifestyle">Lifestyle</option>
-                            <option value="business">Business</option>
-                            <option value="culture">Culture</option>
-                            <option value="science">Science</option>
-                            <option value="parenting">Parenting</option>
-                            <option value="environment">Environment</option>
+                    <div className="input-group">
+                        <select className="select select-bordered focus:outline-none">
+                            <option disabled selected>Filter by Category</option>
+                            <option>Tech</option>
+                            <option>Travel</option>
+                            <option>Health</option>
+                            <option>Food</option>
+                            <option>Lifestyle</option>
+                            <option>Business</option>
+                            <option>Culture</option>
+                            <option>Science</option>
+                            <option>Parenting</option>
+                            <option>Environment</option>
                         </select>
                         <button className="btn bg-secondary border-secondary text-white">Go</button>
                     </div>
@@ -54,7 +58,7 @@ const AllBlog = () => {
                             <p className="text-xs md:text-sm">{blog.shortDec}</p>
                             <div className="card-actions justify-end">
                                 <button className="btn btn-secondary btn-xs md:btn-sm rounded-full font-bold"><FaRegBookmark></FaRegBookmark> </button>
-                                <button className="btn btn-primary btn-xs md:btn-sm rounded-full text-white"><FaArrowRight></FaArrowRight> </button>
+                                <Link to={`/blogdetail/${blog._id}`}><button className="btn btn-primary btn-xs md:btn-sm rounded-full text-white"><FaArrowRight></FaArrowRight> </button></Link>
                             </div>
                         </div>
                     </div>)

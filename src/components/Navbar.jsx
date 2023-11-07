@@ -48,12 +48,7 @@ const Navbar = () => {
                         user ?
                             <div className="flex justify-center items-center">
                                 <button onClick={handelLogOut} className="btn btn-ghost btn-xs text-secondary mr-2">Logout</button>
-                                {
-                                    user.photoURL ?
-                                        <img title={user?.displayName} className="w-8 rounded-full" src={user?.photoURL} />
-                                        :
-                                        <img title={user?.displayName} className="w-8 rounded-full" src="https://i.ibb.co/r69Q4h6/user-icon-gray.png" />
-                                }
+                                <img className="w-8 rounded-full" src={user?.photoURL || "https://i.ibb.co/r69Q4h6/user-icon-gray.png"} />
                             </div>
                             :
                             <div className="flex justify-center items-center">

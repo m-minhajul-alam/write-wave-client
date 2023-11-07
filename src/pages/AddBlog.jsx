@@ -1,4 +1,3 @@
-// import { useQuery } from "@tanstack/react-query";
 import { useContext } from "react";
 import toast from "react-hot-toast";
 import { AuthContext } from "../providers/AuthProvider";
@@ -55,29 +54,29 @@ const AddBlog = () => {
                     <div className="flex-shrink-0 w-full max-w-sm">
                         <form onSubmit={hendelAddBlog}>
                             <div className="form-control my-2">
-                                <input type="url" name='photo' placeholder="Photo URL" className="input input-bordered" required />
+                                <input type="url" name='photo' placeholder="Photo URL" className="input input-bordered focus:outline-none" required />
                             </div>
                             <select required name="category" className="select select-bordered w-full max-w-sm focus:outline-none">
                                 <option disabled selected>Select A Category</option>
-                                <option value="tech">Tech</option>
-                                <option value="travel">Travel</option>
-                                <option value="health">Health</option>
-                                <option value="food">Food</option>
-                                <option value="lifestyle">Lifestyle</option>
-                                <option value="business">Business</option>
-                                <option value="culture">Culture</option>
-                                <option value="science">Science</option>
-                                <option value="parenting">Parenting</option>
-                                <option value="environment">Environment</option>
+                                <option>Tech</option>
+                                <option>Travel</option>
+                                <option>Health</option>
+                                <option>Food</option>
+                                <option>Lifestyle</option>
+                                <option>Business</option>
+                                <option>Culture</option>
+                                <option>Science</option>
+                                <option>Parenting</option>
+                                <option>Environment</option>
                             </select>
                             <div className="form-control my-2">
-                                <input type="text" name='title' placeholder="Blog Title" className="input input-bordered" required />
+                                <input type="text" name='title' placeholder="Add Blog Title (under 30 characters)" className="input input-bordered focus:outline-none" maxLength="30" required />
                             </div>
                             <div className="form-control my-2">
-                                <textarea name="shortDec" id="" cols="30" rows="3" placeholder="Add A Short Description" className="p-4 rounded-lg bg-base-100 border-2 focus:outline-none" required></textarea>
+                                <textarea name="shortDec" id="" cols="30" rows="4" placeholder="Add Short Description (under 150 characters)" maxLength="150" className="p-4 rounded-lg bg-base-100 border-2 focus:outline-none" required></textarea>
                             </div>
                             <div className="form-control my-2">
-                                <textarea name="longDec" id="" cols="30" rows="10" placeholder="Write Full Blog" className="p-4 rounded-lg bg-base-100 border-2 focus:outline-none" required></textarea>
+                                <textarea name="longDec" id="" cols="30" rows="10" placeholder="Add Short Description (under 3000 characters)" maxLength="3000" className="p-4 rounded-lg bg-base-100 border-2 focus:outline-none" required></textarea>
                             </div>
                             <div className="form-control my-2">
                                 <button className="btn btn-primary text-white">Add</button>

@@ -24,16 +24,16 @@ const UpdateBlog = () => {
                                 <input type="url" name='photo' placeholder="Photo URL" className="input input-bordered" required />
                             </div>
                             <select required className="select select-bordered w-full max-w-sm focus:outline-none">
-                                <option value="tech">Tech</option>
-                                <option value="travel">Travel</option>
-                                <option value="health">Health</option>
-                                <option value="food">Food</option>
-                                <option value="lifestyle">Lifestyle</option>
-                                <option value="business">Business</option>
-                                <option value="culture">Culture</option>
-                                <option value="science">Science</option>
-                                <option value="parenting">Parenting</option>
-                                <option value="environment">Environment</option>
+                                <option>Tech</option>
+                                <option>Travel</option>
+                                <option>Health</option>
+                                <option>Food</option>
+                                <option>Lifestyle</option>
+                                <option>Business</option>
+                                <option>Culture</option>
+                                <option>Science</option>
+                                <option>Parenting</option>
+                                <option>Environment</option>
                             </select>
                             <div className="form-control my-2">
                                 <input type="text" name='title' placeholder="Blog Title" className="input input-bordered" required />
