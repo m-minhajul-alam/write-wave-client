@@ -3,6 +3,8 @@ import toast from "react-hot-toast";
 import { FaArrowRight, FaRegBookmark } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 
 const AllBlog = () => {
     const { user } = useContext(AuthContext);
@@ -114,7 +116,11 @@ const AllBlog = () => {
                                 (filteredBlogs?.map(blog => <div key={blog._id} className="card bg-base-100 shadow-xl">
                                     <figure>
                                         <div className="relative h-32">
-                                            <img src={blog.photo} alt="Blog Image" className="w-full object-cover" />
+                                            <PhotoProvider>
+                                                <PhotoView src={blog.photo}>
+                                                    <img src={blog.photo} alt="Blog Image" className="w-full object-cover" />
+                                                </PhotoView>
+                                            </PhotoProvider>
                                             <div className="absolute top-0 left-0 bg-secondary text-white text-xs font-bold p-2 rounded-br-lg">{blog.category}</div>
                                         </div>
                                     </figure>

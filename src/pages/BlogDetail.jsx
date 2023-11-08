@@ -2,6 +2,9 @@ import { useContext, useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import toast from "react-hot-toast";
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
+
 
 const BlogDetail = () => {
     const { user } = useContext(AuthContext);
@@ -47,7 +50,7 @@ const BlogDetail = () => {
                 console.log('Error in useEffect:', error);
             });
 
-    }, []);
+    }, [_id]);
 
 
 
@@ -66,7 +69,11 @@ const BlogDetail = () => {
                 {/* Main Panal */}
                 <div className="md:col-span-2 space-y-6">
                     <div className="relative">
-                        <img src={photo} alt="Blog Image" className="rounded-xl shadow-lg" />
+                        <PhotoProvider>
+                            <PhotoView src={photo}>
+                                <img src={photo} alt="Blog Image" className="rounded-xl shadow-lg" />
+                            </PhotoView>
+                        </PhotoProvider>
                         <div className="absolute top-0 left-0 bg-secondary text-sm font-bold text-white p-2 rounded-tl-md rounded-br-md">
                             {category}
                         </div>
@@ -85,15 +92,6 @@ const BlogDetail = () => {
                             }
                         </div>
                     </div>
-
-                    {/* <h2 className="card-title">
-                        {title}
-                        <div className="badge badge-secondary">
-                            (user?.email == ownerEmail) &&<div><Link to={`/updateblog/${_id}`}><button className="btn btn-primary btn-sm rounded-full text-white mr-3">Update</button></Link>
-                                </div>
-                        
-                        </div>
-                    </h2> */}
 
                     <h1 className="text-3xl text-primary font-bold">{title}</h1>
                     <p className="text-justify">{shortDec}</p>
