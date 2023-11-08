@@ -46,9 +46,10 @@ const AllBlog = () => {
         }
     };
 
-    const addToWishlist = (blogId) => {
+    const addToWishlist = (blog) => {
         const userEmail = user.email;
-        const newWishlist = { userEmail, blogId };
+        const { photo, title, shortDec, category } = blog
+        const newWishlist = { userEmail, photo, title, shortDec, category };
         console.log(newWishlist);
 
         fetch('http://localhost:5000/wishlist', {
@@ -68,8 +69,6 @@ const AllBlog = () => {
                 toast.error("An error. can't add in wishlist")
             });
     };
-
-
 
     return (
         <div className="max-w-6xl mx-auto my-4">
@@ -114,17 +113,16 @@ const AllBlog = () => {
                             {
                                 (filteredBlogs?.map(blog => <div key={blog._id} className="card bg-base-100 shadow-xl">
                                     <figure>
-                                        {/* <img className="w-full h-40 object-cover" src={blog.photo} alt="" /> */}
                                         <div className="relative h-32">
-                                            <img src={blog.photo} alt="Blog Image" className="object-cover" />
+                                            <img src={blog.photo} alt="Blog Image" className="w-full object-cover" />
                                             <div className="absolute top-0 left-0 bg-secondary text-white text-xs font-bold p-2 rounded-br-lg">{blog.category}</div>
                                         </div>
                                     </figure>
                                     <div className="card-body">
                                         <h2 className="card-title text-base md:text-xl">{blog.title}</h2>
                                         <p className="text-xs md:text-sm">{blog.shortDec}</p>
-                                        <div onClick={() => addToWishlist(blog._id)} className="card-actions justify-end">
-                                            <button className="btn btn-secondary btn-xs md:btn-sm rounded-full font-bold"><span>Wishlist</span><FaRegBookmark></FaRegBookmark> </button>
+                                        <div className="card-actions justify-end">
+                                            <button onClick={() => addToWishlist(blog)} className="btn btn-secondary btn-xs md:btn-sm rounded-full font-bold"><span>Wishlist</span><FaRegBookmark></FaRegBookmark> </button>
                                             <Link to={`/blogdetail/${blog._id}`}><button className="btn btn-primary btn-xs md:btn-sm rounded-full text-white"><FaArrowRight></FaArrowRight> </button></Link>
                                         </div>
                                     </div>
