@@ -10,11 +10,13 @@ import UpdateBlog from "../pages/UpdateBlog";
 import Wishlist from "../pages/Wishlist";
 import FeaturedBlog from "../pages/FeaturedBlog";
 import PrivateRoute from "./PiveteRoute";
+import Error from "../pages/Error";
 
 const router = createBrowserRouter([
     {
         path: '/',
         element: <Root></Root>,
+        errorElement: <Error></Error>,
         children: [
             {
                 path: '/',
@@ -51,11 +53,13 @@ const router = createBrowserRouter([
     },
     {
         path: '/singup',
-        element: <SingUp></SingUp>
+        element: <SingUp></SingUp>,
+        errorElement: <Error></Error>,
     },
     {
         path: '/login',
-        element: <Login></Login>
+        element: <Login></Login>,
+        errorElement: <Error></Error>,
     },
 ])
 
