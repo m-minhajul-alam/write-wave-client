@@ -9,25 +9,17 @@ const Wishlist = () => {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-                <div className="card card-side bg-base-100 shadow-xl h-44">
-                    <figure><img className="w-32 md:w-44 h-full object-cover" src="https://i.ibb.co/qFCQbRw/00001.webp" alt="" /></figure>
-                    <div className="card-body">
-                        <h2 className="card-title">New movie is released!</h2>
-                        <p className="hidden md:flex">Click the button to watch on Jetflix app. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</p>
-                        <div className="card-actions flex flex-row justify-start md:justify-end">
-                            <button className="btn btn-sm rounded-full btn-gost bg-gray-100">Watch</button>
-                            <button className="btn btn-sm rounded-full btn-secondary"><FaTimes></FaTimes></button>
-                            <button className="btn btn-sm rounded-full btn-primary"><FaArrowRight></FaArrowRight></button>
-                        </div>
+                <div className="bg-white shadow-lg rounded-lg overflow-hidden m-2 flex h-40">
+                    <div className="w-1/3 relative">
+                        <img src="https://i.ibb.co/Y0tTNNg/Banner-2.png" alt="Blog Image" className="w-full h-full object-cover" />
+                        <div className="absolute top-0 left-0 bg-secondary text-xs font-bold text-white p-2 rounded-br-lg">Tech</div>
                     </div>
-                </div>
-                <div className="card card-side bg-base-100 shadow-xl h-44">
-                    <figure><img className="w-32 md:w-44 h-full object-cover" src="https://i.ibb.co/Y0tTNNg/Banner-2.png" alt="" /></figure>
-                    <div className="card-body">
-                        <h2 className="card-title">New movie is released!</h2>
-                        <p className="hidden md:flex">Click the button to watch on Jetflix app. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.</p>
-                        <div className="card-actions flex flex-row justify-start md:justify-end">
-                            <button className="btn btn-sm rounded-full btn-gost bg-gray-100">Watch</button>
+                    <div className="w-2/3 p-4">
+                        <div className="h-20">
+                            <h3 className="text-xl font-semibold text-gray-800">Blog Title</h3>
+                            <p className="text-gray-600 text-sm">Short Description of the Blog</p>
+                        </div>
+                        <div className="mt-4 flex justify-end gap-3 items-center">
                             <button className="btn btn-sm rounded-full btn-secondary"><FaTimes></FaTimes></button>
                             <button className="btn btn-sm rounded-full btn-primary"><FaArrowRight></FaArrowRight></button>
                         </div>

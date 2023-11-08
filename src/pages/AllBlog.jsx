@@ -113,11 +113,15 @@ const AllBlog = () => {
                         ? <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-8 gap-3 md:gap-5">
                             {
                                 (filteredBlogs?.map(blog => <div key={blog._id} className="card bg-base-100 shadow-xl">
-                                    <figure><img className="w-full h-40 object-cover" src={blog.photo} alt="" /></figure>
+                                    <figure>
+                                        {/* <img className="w-full h-40 object-cover" src={blog.photo} alt="" /> */}
+                                        <div className="relative h-32">
+                                            <img src={blog.photo} alt="Blog Image" className="object-cover" />
+                                            <div className="absolute top-0 left-0 bg-secondary text-white text-xs font-bold p-2 rounded-br-lg">{blog.category}</div>
+                                        </div>
+                                    </figure>
                                     <div className="card-body">
-                                        <h2 className="card-title text-base md:text-xl">{blog.title}
-                                            <div className="badge badge-secondary">{blog.category}</div>
-                                        </h2>
+                                        <h2 className="card-title text-base md:text-xl">{blog.title}</h2>
                                         <p className="text-xs md:text-sm">{blog.shortDec}</p>
                                         <div onClick={() => addToWishlist(blog._id)} className="card-actions justify-end">
                                             <button className="btn btn-secondary btn-xs md:btn-sm rounded-full font-bold"><span>Wishlist</span><FaRegBookmark></FaRegBookmark> </button>
