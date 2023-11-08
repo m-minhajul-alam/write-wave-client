@@ -34,7 +34,7 @@ const Wishlist = () => {
             reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/wishlist/${blogId}`, {
+                fetch(`https://write-wave-server.vercel.app/wishlist/${blogId}`, {
                     method: "DELETE",
                 })
                     .then(res => res.json())

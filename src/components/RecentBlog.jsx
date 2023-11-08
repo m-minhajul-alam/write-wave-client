@@ -13,7 +13,7 @@ const RecentBlog = () => {
         const fiveDaysAgo = new Date();
         fiveDaysAgo.setDate(fiveDaysAgo.getDate() - 5);
 
-        fetch("http://localhost:5000/blogs")
+        fetch("https://write-wave-server.vercel.app/blogs")
             .then((res) => res.json())
             .then((data) => {
                 const recentBlogs = data.filter((blog) => new Date(blog.uploadTime) >= fiveDaysAgo);
@@ -33,7 +33,7 @@ const RecentBlog = () => {
         const newWishlist = { userEmail, photo, title, shortDec, category, blogId: _id };
         console.log(newWishlist);
 
-        fetch('http://localhost:5000/wishlist', {
+        fetch('https://write-wave-server.vercel.app/wishlist', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

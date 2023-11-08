@@ -16,7 +16,7 @@ const AddBlog = () => {
         const currentDate = new Date().toISOString();
         const newBlog = ({ photo, category, title, shortDec, longDec, ownerEmail: user.email, ownerPhoto: user.photoURL, ownerName: user.displayName, uploadTime: currentDate });
 
-        fetch('http://localhost:5000/blogs', {
+        fetch('https://write-wave-server.vercel.app/blogs', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

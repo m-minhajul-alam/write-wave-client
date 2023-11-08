@@ -11,7 +11,7 @@ const AllBlog = () => {
 
     useEffect(() => {
         setFilteredBlogs(null);
-        fetch("http://localhost:5000/blogs")
+        fetch("https://write-wave-server.vercel.app/blogs")
             .then(res => res.json())
             .then(data => {
                 setAllBlogs(data);
@@ -52,7 +52,7 @@ const AllBlog = () => {
         const newWishlist = { userEmail, photo, title, shortDec, category, blogId: _id };
         console.log(newWishlist);
 
-        fetch('http://localhost:5000/wishlist', {
+        fetch('https://write-wave-server.vercel.app/wishlist', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

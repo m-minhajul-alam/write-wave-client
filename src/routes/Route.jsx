@@ -35,17 +35,17 @@ const router = createBrowserRouter([
             {
                 path: '/wishlist',
                 element: <PrivateRoute><Wishlist></Wishlist></PrivateRoute>,
-                loader: () => fetch('http://localhost:5000/wishlist')
+                loader: () => fetch('https://write-wave-server.vercel.app/wishlist')
             },
             {
                 path: '/updateblog/:id',
                 element: <PrivateRoute><UpdateBlog></UpdateBlog></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/blogs/${params.id}`)
+                loader: ({ params }) => fetch(`https://write-wave-server.vercel.app/blogs/${params.id}`)
             },
             {
                 path: '/blogdetail/:id',
                 element: <BlogDetail></BlogDetail>,
-                loader: ({ params }) => fetch(`http://localhost:5000/blogs/${params.id}`)
+                loader: ({ params }) => fetch(`https://write-wave-server.vercel.app/blogs/${params.id}`)
             },
         ]
     },

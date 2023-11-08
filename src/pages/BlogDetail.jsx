@@ -21,7 +21,7 @@ const BlogDetail = () => {
             userPhoto: user.photoURL,
         };
 
-        fetch('http://localhost:5000/comments', {
+        fetch('https://write-wave-server.vercel.app/comments', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -40,7 +40,7 @@ const BlogDetail = () => {
     };
 
     useEffect(() => {
-        fetch(`http://localhost:5000/comments/${_id}`)
+        fetch(`https://write-wave-server.vercel.app/comments/${_id}`)
             .then(res => res.json())
             .then(data => setComments(data))
             .catch((error) => {

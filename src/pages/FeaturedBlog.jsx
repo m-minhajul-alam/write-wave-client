@@ -6,7 +6,7 @@ const FeaturedBlog = () => {
     console.log(featuredBlogs);
 
     useEffect(() => {
-        fetch("http://localhost:5000/blogs")
+        fetch("https://write-wave-server.vercel.app/blogs")
             .then((res) => res.json())
             .then((data) => {
                 const blogsWithWordCount = data.map((blog) => ({

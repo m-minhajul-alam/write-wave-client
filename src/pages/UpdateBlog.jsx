@@ -16,7 +16,7 @@ const UpdateBlog = () => {
         const longDec = form.longDec.value;
         const updateBlog = ({ photo, category, title, shortDec, longDec, ownerEmail: ownerEmail, ownerPhoto: ownerPhoto, ownerName: ownerName, uploadTime: uploadTime });
 
-        fetch(`http://localhost:5000/blogs/${_id}`, {
+        fetch(`https://write-wave-server.vercel.app/blogs/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
