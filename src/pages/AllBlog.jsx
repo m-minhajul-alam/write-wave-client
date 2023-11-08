@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 const AllBlog = () => {
     const [blogs, setBlogs] = useState();
-    console.log(blogs);
 
     useEffect(() => {
         fetch("http://localhost:5000/blogs")
@@ -15,35 +14,53 @@ const AllBlog = () => {
             });
     }, [])
 
+    const handelCategorySubmit = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const category = form.category.value;
+        console.log(category);
+    }
+
+    const handelTitleSearch = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const title = form.title.value;
+        console.log(title);
+    }
+
     return (
         <div className="max-w-6xl mx-auto my-4">
             <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 justify-around items-center bg-primary p-4 rounded-xl my-3">
                 <div className="form-control">
-                    <div className="input-group">
-                        <input type="text" placeholder="Search…" className="input input-bordered focus:outline-none" />
-                        <button className="btn btn-square bg-secondary border-secondary text-white">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-                        </button>
-                    </div>
+                    <form onSubmit={handelTitleSearch}>
+                        <div className="input-group">
+                            <input type="text" name="title" placeholder="Search…" className="input input-bordered focus:outline-none" />
+                            <button className="btn btn-square bg-secondary border-secondary text-white">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                            </button>
+                        </div>
+                    </form>
                 </div>
 
                 <div className="form-control">
-                    <div className="input-group">
-                        <select className="select select-bordered focus:outline-none">
-                            <option disabled selected>Filter by Category</option>
-                            <option>Tech</option>
-                            <option>Travel</option>
-                            <option>Health</option>
-                            <option>Food</option>
-                            <option>Lifestyle</option>
-                            <option>Business</option>
-                            <option>Culture</option>
-                            <option>Science</option>
-                            <option>Parenting</option>
-                            <option>Environment</option>
-                        </select>
-                        <button className="btn bg-secondary border-secondary text-white">Go</button>
-                    </div>
+                    <form onSubmit={handelCategorySubmit}>
+                        <div className="input-group">
+                            <select name="category" className="select select-bordered focus:outline-none">
+                                <option disabled selected>Filter by Category</option>
+                                <option>Tech</option>
+                                <option>Travel</option>
+                                <option>Health</option>
+                                <option>Food</option>
+                                <option>Lifestyle</option>
+                                <option>Business</option>
+                                <option>Culture</option>
+                                <option>Science</option>
+                                <option>Parenting</option>
+                                <option>Environment</option>
+                            </select>
+                            <button type="submit" className="btn bg-secondary border-secondary text-white">Go</button>
+                        </div>
+                    </form>
                 </div>
             </div>
 

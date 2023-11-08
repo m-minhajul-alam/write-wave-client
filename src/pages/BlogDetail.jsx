@@ -1,12 +1,42 @@
 import { useContext } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
+import toast from "react-hot-toast";
 
 const BlogDetail = () => {
     const { user } = useContext(AuthContext);
 
     const loadedBlog = useLoaderData();
     const { _id, title, shortDec, photo, ownerPhoto, ownerName, ownerEmail, longDec, category } = loadedBlog;
+
+    const handleCommentSubmit = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const commentText = form.comment.value;
+        const newComment = {
+            comment: commentText,
+            blogId: _id,
+            userName: user.displayName,
+            userPhoto: user.photoURL,
+        };
+
+        fetch('http://localhost:5000/comments', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newComment),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+                if (data.insertedId) {
+                    toast.success('New comment added')
+                }
+            });
+        form.reset();
+    };
+
 
     return (
         <div className="max-w-6xl mx-auto my-4">
@@ -48,10 +78,10 @@ const BlogDetail = () => {
                     <div>
                         {
                             (user?.email !== ownerEmail) ?
-                                <form>
+                                <form onSubmit={handleCommentSubmit}>
                                     <div className="w-full flex flex-col justify-center">
-                                        <textarea name="" id="" cols="35" rows="3" placeholder="Type your comment..." className="p-4 rounded-xl rounded-b-none focus:outline-none"></textarea>
-                                        <input className="btn btn-secondary btn-sm rounded-t-none" type="submit" value="submit" />
+                                        <textarea name="comment" id="" cols="35" rows="3" placeholder="Type your comment..." className="p-4 rounded-xl rounded-b-none focus:outline-none"></textarea>
+                                        <input className="btn btn-secondary btn-sm text-white rounded-t-none" type="submit" value="submit" />
                                     </div>
                                 </form>
                                 :

@@ -13,7 +13,9 @@ const AddBlog = () => {
         const title = form.title.value;
         const shortDec = form.shortDec.value;
         const longDec = form.longDec.value;
-        const newBlog = ({ photo, category, title, shortDec, longDec, ownerEmail: user.email, ownerPhoto: user.photoURL, ownerName: user.displayName });
+        const currentDate = new Date().toISOString();
+        const newBlog = ({ photo, category, title, shortDec, longDec, ownerEmail: user.email, ownerPhoto: user.photoURL, ownerName: user.displayName, uploadTime: currentDate });
+        
         console.log(newBlog);
 
         // const { data } = useQuery({

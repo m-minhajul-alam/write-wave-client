@@ -1,9 +1,10 @@
 import toast from "react-hot-toast";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
 const UpdateBlog = () => {
+    const navigaet = useNavigate()
     const loadedBlog = useLoaderData();
-    const { _id, title, shortDec, photo, ownerPhoto, ownerName, ownerEmail, longDec, category } = loadedBlog;
+    const { _id, title, shortDec, photo, ownerPhoto, ownerName, ownerEmail, longDec, category, uploadTime } = loadedBlog;
 
     const hendelUpdateBlog = (e) => {
         e.preventDefault();
@@ -13,7 +14,7 @@ const UpdateBlog = () => {
         const title = form.title.value;
         const shortDec = form.shortDec.value;
         const longDec = form.longDec.value;
-        const updateBlog = ({ photo, category, title, shortDec, longDec, ownerEmail: ownerEmail, ownerPhoto: ownerPhoto, ownerName: ownerName });
+        const updateBlog = ({ photo, category, title, shortDec, longDec, ownerEmail: ownerEmail, ownerPhoto: ownerPhoto, ownerName: ownerName, uploadTime: uploadTime });
 
         fetch(`http://localhost:5000/blogs/${_id}`, {
             method: 'PUT',
@@ -25,10 +26,10 @@ const UpdateBlog = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                if (data.insertedId) {
+                if (data.modifiedCount > 0) {
                     toast.success('Blog Updated')
                 }
-                e.target.reset();
+                navigaet('/allblog')
             })
     }
 
@@ -58,13 +59,13 @@ const UpdateBlog = () => {
                                 <option>Environment</option>
                             </select>
                             <div className="form-control my-2">
-                                <input type="text" name='title' defaultValue={title} placeholder="Blog Title" className="input input-bordered" required />
+                                <input type="text" name='title' defaultValue={title} placeholder="Add Blog Title (under 30 characters)" className="input input-bordered" maxLength="30" required />
                             </div>
                             <div className="form-control my-2">
-                                <textarea name="shortDec" id="" cols="30" rows="3" defaultValue={shortDec} placeholder="Add A Short Description" className="p-4 rounded-lg bg-base-100 border-2 focus:outline-none" required></textarea>
+                                <textarea name="shortDec" id="" cols="30" rows="3" defaultValue={shortDec} placeholder="Add Short Description (under 150 characters)" className="p-4 rounded-lg bg-base-100 border-2 focus:outline-none" maxLength="150" required></textarea>
                             </div>
                             <div className="form-control my-2">
-                                <textarea name="longDec" id="" cols="30" rows="10" defaultValue={longDec} placeholder="Write Full Blog" className="p-4 rounded-lg bg-base-100 border-2 focus:outline-none" required></textarea>
+                                <textarea name="longDec" id="" cols="30" rows="10" defaultValue={longDec} placeholder="Add Short Description (under 3000 characters)" className="p-4 rounded-lg bg-base-100 border-2 focus:outline-none" maxLength="3000" required></textarea>
                             </div>
                             <div className="form-control my-2">
                                 <button className="btn btn-primary text-white">Update</button>
