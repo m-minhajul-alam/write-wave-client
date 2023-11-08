@@ -48,8 +48,8 @@ const AllBlog = () => {
 
     const addToWishlist = (blog) => {
         const userEmail = user.email;
-        const { photo, title, shortDec, category } = blog
-        const newWishlist = { userEmail, photo, title, shortDec, category };
+        const { _id, photo, title, shortDec, category } = blog
+        const newWishlist = { userEmail, photo, title, shortDec, category, blogId: _id };
         console.log(newWishlist);
 
         fetch('http://localhost:5000/wishlist', {
