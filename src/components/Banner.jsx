@@ -15,7 +15,7 @@ const Banner = () => {
                                     <span className="text-secondary">Create. </span>
                                     <span>Share. </span></h1>
                                 <p className="mb-2 md:mb-5 text-xs md:text-base">Welcome to our vibrant blog community! Our platform is your canvas to Explore, Create, and Share your stories with the world.</p>
-                                <Link><button className="btn btn-primary btn-xs md:btn-md text-neutral-content">Get Started</button></Link>
+                                <Link><button className="btn btn-primary btn-xs text-white md:btn-md text-neutral-content">Get Started</button></Link>
                             </div>
                         </div>
                     </div>
@@ -35,7 +35,7 @@ const Banner = () => {
                                     <span className="text-secondary">Create. </span>
                                     <span>Share. </span></h1>
                                 <p className="mb-2 md:mb-5 text-xs md:text-base">Welcome to our vibrant blog community! Our platform is your canvas to Explore, Create, and Share your stories with the world.</p>
-                                <Link><button className="btn btn-primary btn-xs md:btn-md text-neutral-content">Get Started</button></Link>
+                                <Link><button className="btn btn-primary btn-xs text-white md:btn-md text-neutral-content">Get Started</button></Link>
                             </div>
                         </div>
                     </div>
@@ -55,7 +55,7 @@ const Banner = () => {
                                     <span className="text-secondary">Create. </span>
                                     <span>Share. </span></h1>
                                 <p className="mb-2 md:mb-5 text-xs md:text-base">Welcome to our vibrant blog community! Our platform is your canvas to Explore, Create, and Share your stories with the world.</p>
-                                <Link><button className="btn btn-primary btn-xs md:btn-md text-neutral-content">Get Started</button></Link>
+                                <Link><button className="btn btn-primary btn-xs text-white md:btn-md text-neutral-content">Get Started</button></Link>
                             </div>
                         </div>
                     </div>
