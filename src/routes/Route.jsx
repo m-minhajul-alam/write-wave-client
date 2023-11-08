@@ -46,7 +46,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/blogdetail/:id',
-                element: <BlogDetail></BlogDetail>,
+                element: <PrivateRoute><BlogDetail></BlogDetail></PrivateRoute>,
                 loader: ({ params }) => fetch(`https://write-wave-server.vercel.app/blogs/${params.id}`)
             },
         ]
