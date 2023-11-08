@@ -27,7 +27,6 @@ const RecentBlog = () => {
     }, []);
 
 
-
     const addToWishlist = (blog) => {
         const userEmail = user.email;
         const { photo, title, shortDec, category } = blog
