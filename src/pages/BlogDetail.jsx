@@ -1,10 +1,11 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import toast from "react-hot-toast";
 
 const BlogDetail = () => {
     const { user } = useContext(AuthContext);
+    const [comments, setComments] = useState();
 
     const loadedBlog = useLoaderData();
     const { _id, title, shortDec, photo, ownerPhoto, ownerName, ownerEmail, longDec, category } = loadedBlog;
@@ -31,11 +32,23 @@ const BlogDetail = () => {
             .then((data) => {
                 console.log(data);
                 if (data.insertedId) {
+                    setComments([...comments, newComment]);
+                    form.reset();
                     toast.success('New comment added')
                 }
             });
-        form.reset();
     };
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/comments/${_id}`)
+            .then(res => res.json())
+            .then(data => setComments(data))
+            .catch((error) => {
+                console.log('Error in useEffect:', error);
+            });
+
+    }, []);
+
 
 
     return (
@@ -90,13 +103,24 @@ const BlogDetail = () => {
                     </div>
 
                     {/* Show Comments */}
-                    <div className="bg-white p-5 rounded-xl">
-                        <div className="flex justify-start items-center gap-3 mb-2">
-                            <img className="w-[40px] rounded-full" src="https://i.ibb.co/9qmtc5b/person-1.jpg" alt="" />
-                            <p className="text-lg font-bold ">jonn</p>
+                    <div className="bg-white p-5 rounded-xl space-y-5">
+                        <div>
+                            <h1 className="font-bold my-2">All Comments Here</h1>
+                            {
+                                comments?.map((comment) => (
+                                    <div key={comment._id} className="my-3">
+                                        <hr />
+                                        <div className="flex justify-start items-center gap-3 my-2">
+                                            <img className="w-[40px] rounded-full" src={comment.userPhoto} alt="" />
+                                            <p className="text-lg font-bold">{comment.userName}</p>
+                                        </div>
+                                        <p>{comment.comment}</p>
+                                    </div>
+                                ))
+                            }
                         </div>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Similique ab cum, est illo blanditiis dolorum nam laudantium expedita, hic incidunt amet delectus quidem quibusdam quo deserunt vel adipisci corrupti dolore.</p>
                     </div>
+
 
                 </div>
             </div>

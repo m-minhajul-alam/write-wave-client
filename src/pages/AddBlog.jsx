@@ -15,16 +15,6 @@ const AddBlog = () => {
         const longDec = form.longDec.value;
         const currentDate = new Date().toISOString();
         const newBlog = ({ photo, category, title, shortDec, longDec, ownerEmail: user.email, ownerPhoto: user.photoURL, ownerName: user.displayName, uploadTime: currentDate });
-        
-        console.log(newBlog);
-
-        // const { data } = useQuery({
-        //     queryKey: ['blogs'],
-        //     queryFn: async () => {
-        //         const res = await fetch('http://localhost:5000/blogs')
-        //         return res.json();
-        //     }
-        // })
 
         fetch('http://localhost:5000/blogs', {
             method: 'POST',

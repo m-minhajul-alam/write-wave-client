@@ -3,30 +3,46 @@ import { FaArrowRight, FaRegBookmark } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const AllBlog = () => {
-    const [blogs, setBlogs] = useState();
+    const [allBlogs, setAllBlogs] = useState();
+    const [filteredBlogs, setFilteredBlogs] = useState();
 
     useEffect(() => {
+        setFilteredBlogs(null);
         fetch("http://localhost:5000/blogs")
             .then(res => res.json())
-            .then(data => setBlogs(data))
+            .then(data => {
+                setAllBlogs(data);
+                setFilteredBlogs(data);
+            })
             .catch((error) => {
                 console.log('Error in useEffect:', error);
             });
     }, [])
 
-    const handelCategorySubmit = (e) => {
+    const handelCategoryFilter = (e) => {
         e.preventDefault();
         const form = e.target;
         const category = form.category.value;
-        console.log(category);
-    }
+        if (category === "Filter by Category") {
+            setFilteredBlogs(allBlogs);
+        } else {
+            const filteredBlogs = allBlogs.filter((blog) => blog.category === category);
+            setFilteredBlogs(filteredBlogs);
+        }
+    };
 
     const handelTitleSearch = (e) => {
         e.preventDefault();
         const form = e.target;
-        const title = form.title.value;
-        console.log(title);
-    }
+        const title = form.title.value.toLowerCase();
+        if (title === "") {
+            setFilteredBlogs(allBlogs);
+        } else {
+            const filteredBlogs = allBlogs.filter((blog) => blog.title.toLowerCase().includes(title));
+            setFilteredBlogs(filteredBlogs);
+        }
+    };
+
 
     return (
         <div className="max-w-6xl mx-auto my-4">
@@ -43,7 +59,7 @@ const AllBlog = () => {
                 </div>
 
                 <div className="form-control">
-                    <form onSubmit={handelCategorySubmit}>
+                    <form onSubmit={handelCategoryFilter}>
                         <div className="input-group">
                             <select name="category" className="select select-bordered focus:outline-none">
                                 <option disabled selected>Filter by Category</option>
@@ -64,21 +80,29 @@ const AllBlog = () => {
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-8 gap-3 md:gap-5">
+            <div>
                 {
-                    blogs && blogs?.map(blog => <div key={blog._id} className="card bg-base-100 shadow-xl">
-                        <figure><img className="w-full h-40 object-cover" src={blog.photo} alt="" /></figure>
-                        <div className="card-body">
-                            <h2 className="card-title text-base md:text-xl">{blog.title}
-                                <div className="badge badge-secondary">{blog.category}</div>
-                            </h2>
-                            <p className="text-xs md:text-sm">{blog.shortDec}</p>
-                            <div className="card-actions justify-end">
-                                <button className="btn btn-secondary btn-xs md:btn-sm rounded-full font-bold"><FaRegBookmark></FaRegBookmark> </button>
-                                <Link to={`/blogdetail/${blog._id}`}><button className="btn btn-primary btn-xs md:btn-sm rounded-full text-white"><FaArrowRight></FaArrowRight> </button></Link>
-                            </div>
+                    filteredBlogs && filteredBlogs.length > 0
+                        ? <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-8 gap-3 md:gap-5">
+                            {
+                                (filteredBlogs?.map(blog => <div key={blog._id} className="card bg-base-100 shadow-xl">
+                                    <figure><img className="w-full h-40 object-cover" src={blog.photo} alt="" /></figure>
+                                    <div className="card-body">
+                                        <h2 className="card-title text-base md:text-xl">{blog.title}
+                                            <div className="badge badge-secondary">{blog.category}</div>
+                                        </h2>
+                                        <p className="text-xs md:text-sm">{blog.shortDec}</p>
+                                        <div className="card-actions justify-end">
+                                            <button className="btn btn-secondary btn-xs md:btn-sm rounded-full font-bold"><FaRegBookmark></FaRegBookmark> </button>
+                                            <Link to={`/blogdetail/${blog._id}`}><button className="btn btn-primary btn-xs md:btn-sm rounded-full text-white"><FaArrowRight></FaArrowRight> </button></Link>
+                                        </div>
+                                    </div>
+                                </div>))
+                            }
                         </div>
-                    </div>)
+                        : (<div className="h-screen">
+                            <p className="text-center font-bold mt-36">No Data Found.</p>
+                        </div>)
                 }
             </div>
         </div >
