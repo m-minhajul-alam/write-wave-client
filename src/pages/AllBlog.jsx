@@ -1,8 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { FaArrowRight, FaRegBookmark } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../providers/AuthProvider";
 
 const AllBlog = () => {
+    const { user } = useContext(AuthContext);
     const [allBlogs, setAllBlogs] = useState();
     const [filteredBlogs, setFilteredBlogs] = useState();
 
@@ -42,6 +45,30 @@ const AllBlog = () => {
             setFilteredBlogs(filteredBlogs);
         }
     };
+
+    const addToWishlist = (blogId) => {
+        const userEmail = user.email;
+        const newWishlist = { userEmail, blogId };
+        console.log(newWishlist);
+
+        fetch('http://localhost:5000/wishlist', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newWishlist),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+                toast.success('Adde in your wishlist')
+            })
+            .catch((error) => {
+                console.log(error);
+                toast.error("An error. can't add in wishlist")
+            });
+    };
+
 
 
     return (
@@ -92,8 +119,8 @@ const AllBlog = () => {
                                             <div className="badge badge-secondary">{blog.category}</div>
                                         </h2>
                                         <p className="text-xs md:text-sm">{blog.shortDec}</p>
-                                        <div className="card-actions justify-end">
-                                            <button className="btn btn-secondary btn-xs md:btn-sm rounded-full font-bold"><FaRegBookmark></FaRegBookmark> </button>
+                                        <div onClick={() => addToWishlist(blog._id)} className="card-actions justify-end">
+                                            <button className="btn btn-secondary btn-xs md:btn-sm rounded-full font-bold"><span>Wishlist</span><FaRegBookmark></FaRegBookmark> </button>
                                             <Link to={`/blogdetail/${blog._id}`}><button className="btn btn-primary btn-xs md:btn-sm rounded-full text-white"><FaArrowRight></FaArrowRight> </button></Link>
                                         </div>
                                     </div>

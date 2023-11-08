@@ -75,7 +75,6 @@ const BlogDetail = () => {
                                 (user?.email == ownerEmail) ?
                                     <div>
                                         <Link to={`/updateblog/${_id}`}><button className="btn btn-primary btn-sm rounded-full text-white mr-3">Update</button></Link>
-                                        <Link><button className="btn btn-secondary btn-sm rounded-full text-white">Delete</button></Link>
                                     </div>
                                     :
                                     " "
@@ -93,7 +92,7 @@ const BlogDetail = () => {
                             (user?.email !== ownerEmail) ?
                                 <form onSubmit={handleCommentSubmit}>
                                     <div className="w-full flex flex-col justify-center">
-                                        <textarea name="comment" id="" cols="35" rows="3" placeholder="Type your comment..." className="p-4 rounded-xl rounded-b-none focus:outline-none"></textarea>
+                                        <textarea name="comment" id="" cols="35" rows="3" placeholder="Type your comment..." className="p-4 rounded-xl rounded-b-none focus:outline-none" maxLength="300"></textarea>
                                         <input className="btn btn-secondary btn-sm text-white rounded-t-none" type="submit" value="submit" />
                                     </div>
                                 </form>
