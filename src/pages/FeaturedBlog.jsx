@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import DataTable from "react-data-table-component";
@@ -19,9 +18,7 @@ const FeaturedBlog = () => {
 
             return topPosts;
         }
-    });
-
-    const [filteredBlogs, setFilteredBlogs] = useState(featuredBlogs);
+    })
 
     if (isPending) {
         return <div className="h-screen flex justify-center items-center">
@@ -42,13 +39,7 @@ const FeaturedBlog = () => {
         },
         {
             name: "Photo",
-            cell: (row) => (
-                <img
-                    src={row.ownerPhoto}
-                    alt=""
-                    className="w-12 h-12 rounded-full"
-                />
-            ),
+            cell: (row) => <img src={row.ownerPhoto} alt="" className="w-12 rounded-full" />,
         },
         {
             name: "Name",
@@ -60,43 +51,21 @@ const FeaturedBlog = () => {
         },
     ];
 
-    const handleSearch = (e) => {
-        const searchQuery = e.target.value.toLowerCase();
-        const filtered = featuredBlogs.filter((blog) =>
-            blog.title.toLowerCase().includes(searchQuery)
-        );
-        setFilteredBlogs(filtered);
-    };
-
     return (
-        <div className="max-w-6xl mx-auto my-4 rounded-xl p-5 bg-white shadow-md">
+        <div className="max-w-6xl mx-auto my-4 rounded-xl">
             <div>
-                <h1 className="text-primary text-3xl text-center font-bold py-5">
-                    Featured Blog
-                </h1>
-                <p className="text-sm text-center font-bold mb-3">
-                    Discover outstanding content in our Featured Blog section.
-                </p>
+                <h1 className="text-primary text-3xl text-center font-bold py-5">Featured Blog</h1>
+                <p className="text-sm text-center font-bold mb-3">Discover outstanding content in our Featured Blog section.</p>
             </div>
-
-            <input
-                type="text"
-                placeholder="Search by Title"
-                className="input input-bordered mb-3"
-                onChange={handleSearch}
-            />
 
             <DataTable
                 columns={columns}
-                data={filteredBlogs}
+                data={featuredBlogs}
                 persistTableHead
                 pagination
-                highlightOnHover
-                defaultSortField="SL"
-                className="rounded-lg shadow-md"
             />
         </div>
     );
-};
+}
 
 export default FeaturedBlog;
