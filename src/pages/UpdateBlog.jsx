@@ -1,3 +1,4 @@
+import axios from "axios";
 import toast from "react-hot-toast";
 import { useLoaderData, useNavigate } from "react-router-dom";
 
@@ -16,20 +17,12 @@ const UpdateBlog = () => {
         const longDec = form.longDec.value;
         const updateBlog = ({ photo, category, title, shortDec, longDec, ownerEmail: ownerEmail, ownerPhoto: ownerPhoto, ownerName: ownerName, uploadTime: uploadTime });
 
-        fetch(`https://write-wave-server.vercel.app/blogs/${_id}`, {
-            method: 'PUT',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(updateBlog)
-        })
-            .then(res => res.json())
+        axios.put(`https://write-wave-server.vercel.app/blogs/${_id}`, updateBlog)
             .then(data => {
-                console.log(data);
-                if (data.modifiedCount > 0) {
+                if (data.data.modifiedCount > 0) {
                     toast.success('Blog Updated')
+                    navigaet('/allblog')
                 }
-                navigaet('/allblog')
             })
     }
 

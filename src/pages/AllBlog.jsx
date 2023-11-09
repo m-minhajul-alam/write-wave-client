@@ -3,13 +3,37 @@ import toast from "react-hot-toast";
 import { FaArrowRight, FaRegBookmark } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
-import { PhotoProvider, PhotoView } from 'react-photo-view';
-import 'react-photo-view/dist/react-photo-view.css';
+import { PhotoView } from "react-photo-view";
+// import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 const AllBlog = () => {
     const { user } = useContext(AuthContext);
-    const [allBlogs, setAllBlogs] = useState();
-    const [filteredBlogs, setFilteredBlogs] = useState();
+    const [allBlogs, setAllBlogs]=useState();
+    const [filteredBlogs, setFilteredBlogs]=useState();
+
+
+    // const { isPending, isError, error, data: allBlogs } = useQuery({
+    //     queryKey: ['allBlogs'],
+    //     queryFn: async () => {
+    //         const res = await axios.get('https://write-wave-server.vercel.app/blogs');
+    //         return res.data;
+    //     }
+    // })
+    // console.log(allBlogs);
+
+    // if (isPending) {
+    //     return <div className="h-screen flex justify-center items-center">
+    //         <span className="loading loading-ring loading-lg"></span>
+    //     </div>
+    // }
+
+    // if (isError) {
+    //     return <div className="h-screen flex justify-center items-center">
+    //         <span className="">{error.message}</span>
+    //     </div>
+    // }
+
 
     useEffect(() => {
         setFilteredBlogs(null);
@@ -24,6 +48,7 @@ const AllBlog = () => {
             });
     }, [])
 
+
     const handelCategoryFilter = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -35,6 +60,7 @@ const AllBlog = () => {
             setFilteredBlogs(filteredBlogs);
         }
     };
+
 
     const handelTitleSearch = (e) => {
         e.preventDefault();
@@ -52,24 +78,13 @@ const AllBlog = () => {
         const userEmail = user.email;
         const { _id, photo, title, shortDec, category } = blog
         const newWishlist = { userEmail, photo, title, shortDec, category, blogId: _id };
-        console.log(newWishlist);
 
-        fetch('https://write-wave-server.vercel.app/wishlist', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(newWishlist),
-        })
-            .then((res) => res.json())
+        axios.post('https://write-wave-server.vercel.app/wishlist', newWishlist)
             .then((data) => {
-                console.log(data);
-                toast.success('Adde in your wishlist')
+                if (data.data.insertedId) {
+                    toast.success('Adde in your wishlist')
+                }
             })
-            .catch((error) => {
-                console.log(error);
-                toast.error("An error. can't add in wishlist")
-            });
     };
 
     return (
@@ -111,16 +126,15 @@ const AllBlog = () => {
             <div>
                 {
                     filteredBlogs && filteredBlogs.length > 0
-                        ? <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-8 gap-3 md:gap-5">
+                        ?
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-8 gap-3 md:gap-5">
                             {
                                 (filteredBlogs?.map(blog => <div key={blog._id} className="card bg-base-100 shadow-xl">
                                     <figure>
                                         <div className="relative h-32">
-                                            <PhotoProvider>
-                                                <PhotoView src={blog.photo}>
-                                                    <img src={blog.photo} alt="Blog Image" className="w-full object-cover" />
-                                                </PhotoView>
-                                            </PhotoProvider>
+                                            <PhotoView src={blog.photo}>
+                                                <img src={blog.photo} alt="Blog Image" className="object-cover" />
+                                            </PhotoView>
                                             <div className="absolute top-0 left-0 bg-secondary text-white text-xs font-bold p-2 rounded-br-lg">{blog.category}</div>
                                         </div>
                                     </figure>
@@ -135,8 +149,8 @@ const AllBlog = () => {
                                 </div>))
                             }
                         </div>
-                        : (<div className="h-screen">
-                            <p className="text-center font-bold mt-36">No Data Found.</p>
+                        : (<div className="h-screen flex justify-center items-center">
+                            <span className="font-bold text-error">No Data Found.</span>
                         </div>)
                 }
             </div>

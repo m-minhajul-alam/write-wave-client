@@ -51,8 +51,9 @@ const NewsletterSignup = () => {
             <motion.div
                 className="lg:flex-1 bg-gradient-to-tr from-primary to-secondary p-8 rounded-lg shadow-md"
                 variants={formVariants}
-                initial="hidden"
-                animate="visible"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
             >
                 <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
                     <motion.input
@@ -70,6 +71,8 @@ const NewsletterSignup = () => {
                         required
                     />
                     <motion.input
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
                         type="submit"
                         className="btn btn-secondary text-white"
                         value="Subscribe"

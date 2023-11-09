@@ -36,8 +36,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/wishlist',
-                element: <PrivateRoute><Wishlist></Wishlist></PrivateRoute>,
-                loader: () => fetch('https://write-wave-server.vercel.app/wishlist')
+                element: <PrivateRoute><Wishlist></Wishlist></PrivateRoute>
             },
             {
                 path: '/updateblog/:id',

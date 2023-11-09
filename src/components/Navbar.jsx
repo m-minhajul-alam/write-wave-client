@@ -47,7 +47,7 @@ const Navbar = () => {
                     {
                         user ?
                             <div className="flex justify-center items-center">
-                                <button onClick={handelLogOut} className="btn btn-ghost btn-xs text-secondary mr-2">Logout</button>
+                                <button onClick={handelLogOut} className="btn btn-ghost btn-sm text-secondary font-bold mr-2">Logout</button>
                                 <img className="w-8 rounded-full" src={user?.photoURL || "https://i.ibb.co/r69Q4h6/user-icon-gray.png"} />
                             </div>
                             :

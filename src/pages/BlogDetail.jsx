@@ -2,8 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import toast from "react-hot-toast";
-import { PhotoProvider, PhotoView } from 'react-photo-view';
-import 'react-photo-view/dist/react-photo-view.css';
+import { PhotoView } from 'react-photo-view';
+import axios from "axios";
 
 
 const BlogDetail = () => {
@@ -24,17 +24,10 @@ const BlogDetail = () => {
             userPhoto: user.photoURL,
         };
 
-        fetch('https://write-wave-server.vercel.app/comments', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(newComment),
-        })
-            .then((res) => res.json())
+        axios.post('https://write-wave-server.vercel.app/comments', newComment)
             .then((data) => {
-                console.log(data);
-                if (data.insertedId) {
+                console.log(data.data);
+                if (data.data.insertedId) {
                     setComments([...comments, newComment]);
                     form.reset();
                     toast.success('New comment added')
@@ -69,11 +62,9 @@ const BlogDetail = () => {
                 {/* Main Panal */}
                 <div className="md:col-span-2 space-y-6">
                     <div className="relative">
-                        <PhotoProvider>
-                            <PhotoView src={photo}>
-                                <img src={photo} alt="Blog Image" className="rounded-xl shadow-lg" />
-                            </PhotoView>
-                        </PhotoProvider>
+                        <PhotoView src={photo}>
+                            <img src={photo} alt="Blog Image" className="rounded-xl shadow-lg" />
+                        </PhotoView>
                         <div className="absolute top-0 left-0 bg-secondary text-sm font-bold text-white p-2 rounded-tl-md rounded-br-md">
                             {category}
                         </div>
