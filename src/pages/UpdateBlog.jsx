@@ -25,7 +25,7 @@ const UpdateBlog = () => {
                 }
             })
     }
-
+ 
     return (
         <div className="max-w-7xl w-[90%] mx-auto mb-4">
             <h1 className="text-primary text-3xl text-center font-bold py-5">Update Your Blog</h1>

@@ -13,7 +13,6 @@ const Footer = () => {
                     <h3 className="footer-title text-white">Follow Us On</h3>
                     <div className="grid grid-flow-col gap-4">
                         <a href="https://www.facebook.com/"><FaFacebook className='text-2xl'></FaFacebook></a>
-                        <a href="https://www.twitter.com/"><FaTwitter className='text-2xl'></FaTwitter></a>
                         <a href="https://www.youtube.com/"><FaYoutube className='text-2xl'></FaYoutube></a>
                     </div>
                 </div>

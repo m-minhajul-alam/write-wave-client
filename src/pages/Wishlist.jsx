@@ -84,7 +84,7 @@ const Wishlist = () => {
                                     <div key={item._id} className="bg-white shadow-lg rounded-lg overflow-hidden m-2 flex h-40">
                                         <div className="w-1/3 relative">
                                             <PhotoView src={item.photo}>
-                                                <img src={item.photo} alt="Blog Image" className="w-full h-full object-cover" />
+                                                <img src={item.photo} alt="Blog Image" className="object-cover" />
                                             </PhotoView>
                                             <div className="absolute bottom-0 right-0 bg-secondary text-xs font-bold text-white p-2 rounded-tl-md">
                                                 {item.category}
