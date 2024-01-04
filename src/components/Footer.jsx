@@ -11,7 +11,7 @@ const Footer = () => {
                 </div>
                 <div data-aos="fade-up" data-aos-duration="1000">
                     <h3 className="footer-title text-white">Follow Us On</h3>
-                    <div className="grid grid-flow-col gap-4">
+                    <div className="flex justify-center items-center">
                         <a href="https://www.facebook.com/"><FaFacebook className='text-2xl'></FaFacebook></a>
                         <a href="https://www.youtube.com/"><FaYoutube className='text-2xl'></FaYoutube></a>
                     </div>
